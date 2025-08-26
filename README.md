@@ -21,9 +21,9 @@
 
 | Category                    | Highlights                                                                                                        |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| **Documentation shortcuts** | • CRM API & CMS API<br>• Webhooks & OAuth<br>• HubL reference                                                     |
-| **URL tools**               | • Toggle debug mode<br>• Disable cache<br>• Preview/Test mode<br>• Portal simulation                              |
-| **Community links**         | • Developer announcements<br>• CMS development tips<br>• CRM customization Q\&A<br>• Workflow automation examples |
+| **Developer Tools**         | • Clear Cache<br>• Enable Developer Mode<br>• Debug Mode<br>• Language Switching<br>• AMP Version Preview         |
+| **Documentation**          | • CRM API Reference<br>• CMS Developer Docs<br>• HubL Documentation<br>• Webhooks & OAuth Guides                  |
+| **Community & Support**    | • Status Page<br>• Developer Announcements<br>• CMS Development Tips<br>• APIs & Integrations Forum<br>• HubSpot Developer Ideas |
 
 ## Installation
 
@@ -92,34 +92,57 @@ The extension icon will appear in your toolbar once loading completes.
 
 1. Click the HubSpot Developer Extension icon.
 2. Navigate between **Docs**, **URL Tools**, and **Community** tabs.
-3. Actions that alter the current tab’s URL will automatically reload the page for you.
+3. Actions that alter the current tab's URL will automatically reload the page for you.
 
-### URL Tools
+### Language Switching
 
-| Tool                  | What it does                                          |
-| --------------------- | ----------------------------------------------------- |
-| **Debug mode**        | Appends `?hsDebug=true`                               |
-| **Disable cache**     | Appends `?nocache=true`                               |
-| **Preview / Test**    | Quickly switch between `?preview=` and `?test=` modes |
-| **Portal simulation** | Temporarily impersonate another portal by ID          |
+The extension provides built-in support for multi-language HubSpot sites:
 
-> **Note:** All URL tools work only on HubSpot domains.
+1. **Automatic Detection**: The extension automatically detects:
+   - Available languages from alternate `hreflang` links
+   - Current language from HubSpot variables
+   - Portal ID for proper context
+
+2. **Easy Switching**: 
+   - Select your target language from the dropdown
+   - Click "Switch Language" to preview the page in the selected language
+   - The language selector is automatically enabled when multiple languages are available
+
+### Developer Tools
+
+| Tool                  | What it does                                                                |
+| --------------------- | -------------------------------------------------------------------------- |
+| **Clear Cache**       | Clears browser cache for the current HubSpot page                          |
+| **Developer Mode**    | Enables HubSpot developer mode for advanced functionality                   |
+| **Debug Mode**        | Shows debug information in the browser console                             |
+| **Only Debug Info**   | Filters console output to show only debug-related information              |
+| **AMP Version**       | Previews the AMP (Accelerated Mobile Pages) version of the current page    |
+| **Design Manager**    | Opens the HubSpot Design Manager for the current portal                    |
+| **Language Switch**   | Allows switching between available languages on multi-language pages        |
+
+> **Note:** The extension automatically detects the portal ID and available languages from the current HubSpot page.
 
 ## Project Structure
 
 ```
-├── src/              # Source files (development)
-│   ├── manifest.json # Extension manifest
-│   ├── popup.html    # Main interface
+├── src/                      # Source files (development)
+│   ├── manifest.json         # Extension manifest
+│   ├── popup.html           # Main extension interface
 │   ├── css/
-│   │   └── popup.css
+│   │   └── popup.css       # Styles for the popup interface
 │   ├── js/
-│   │   ├── popup.js
-│   │   └── content.js
-│   └── images/       # Icons & assets
+│   │   ├── popup.js        # Popup interface functionality
+│   │   └── content.js      # Content script for page interaction
+│   └── images/             # Extension icons & assets
+│       ├── icon-16.png     # Browser toolbar icon (16x16)
+│       ├── icon-38.png     # Browser toolbar icon (38x38)
+│       ├── icon-48.png     # Extension management icon
+│       ├── icon-128.png    # Chrome Web Store icon
+│       ├── logo-full.png   # Full extension logo
+│       └── ...            # Additional assets
 │
-└── dist/             # Built files (generated, do not edit)
-    └── [...]        # Copy of src/ after build
+└── dist/                    # Built files (generated, do not edit)
+    └── [...]              # Copy of src/ after build
 ```
 
 ## Contributing
@@ -144,7 +167,3 @@ We are committed to fostering a welcoming community. Please read our [Code of Co
 ###### Disclaimer
 
 *HubSpot® is a registered trademark of HubSpot, Inc. This project is not affiliated with or endorsed by HubSpot.*
-
-## License
-
-MIT © Avidly Development

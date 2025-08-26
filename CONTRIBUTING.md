@@ -9,11 +9,10 @@ Thank you for considering a contribution! We welcome pull requests, bug reports,
 
 * [Getting Started](#getting-started)
 * [Workflow](#workflow)
-
   * [Branch Naming](#branch-naming)
   * [Commit Messages](#commit-messages)
 * [Coding Standards](#coding-standards)
-* [Testing & Continuous Integration](#testing--continuous-integration)
+* [Testing](#testing)
 * [Documentation](#documentation)
 * [Code of Conduct](#code-of-conduct)
 * [License](#license)
@@ -31,19 +30,25 @@ Thank you for considering a contribution! We welcome pull requests, bug reports,
 2. **Install dependencies**
 
    ```bash
-   npm install   # or pnpm / yarn
+   npm install
    ```
-3. **Run the extension in watch mode**
+3. **Lint the codebase**
 
    ```bash
-   npm run dev   # builds to /dist and watches for changes
+   npm run lint
+   # optional: automatically fix simple issues
+   npm run lint:fix
    ```
-4. **Load the development build** in Chrome:
+4. **Run the extension in development mode**
+
+   ```bash
+   npm run build
+   ```
+   This builds the extension to the `/dist` folder.
+5. **Load the development build** in Chrome:
 
    * Navigate to **chrome://extensions** and enable **Developer mode**.
-   * Click **Load unpacked** and select the `/dist` folder that `npm run dev` created.
-
-> **Tip:** The `dev` script rebuilds on save, so simply refresh the extension in the Chrome Extensions page after each change.
+   * Click **Load unpacked** and select the `/dist` folder.
 
 ---
 
@@ -96,17 +101,26 @@ feature(url-tools): add toggle for hsDebug parameter
 ## Coding Standards
 
 * **Manifest V3**: All code must comply with Chrome Extension Manifest V3.
-* **ESLint & Prettier**: Run `npm run lint` to check; `npm run lint --fix` to auto‑fix style issues.
+* **ESLint**: Run `npm run lint` to check; `npm run lint:fix` to auto‑fix style issues. Prettier is not used in this repo.
 * **Async/Await**: Use async/await for Chrome API calls.
-* **EditorConfig**: An `.editorconfig` file enforces indentation and line‑ending consistency.
 * **UI**: Keep the popup interface lightweight, accessible, and consistent with the existing design.
+* **Build**: No bundler is used. `npm run build` cleans and copies `src/` into `dist/`.
 
 ---
 
-## Testing & Continuous Integration
+## Testing
 
-* **Unit tests** (*coming soon*): When available, ensure `npm test` passes locally.
-* **GitHub Actions** run linting and tests on every pull request. A green CI check is required before merge.
+* After making changes, run `npm run build`.
+* In Chrome, go to `chrome://extensions`, enable Developer Mode, and refresh the extension.
+* Verify features on HubSpot domains:
+  * **Developer Tools** (from `popup.html`): Clear Cache, Enable Developer Mode, Debug Mode, Only Debug Info, AMP Version, Design Manager.
+  * **Language Switching** (from `content.js`):
+    * Languages are detected from `link[rel="alternate"][hreflang]` tags.
+    * Current language and portal ID are detected from `hsVars` when available.
+    * Language selector enables only when multiple languages exist; switching loads the selected language.
+  * **Console output**: With Debug Mode on, ensure debug information appears as expected.
+* Ensure `npm run lint` passes before opening a PR.
+* Report any issues or bugs in the repository's issue tracker.
 
 ---
 
@@ -116,6 +130,7 @@ If your change adds or modifies functionality, update:
 
 * **README.md** (high‑level overview)
 * **User manual / screenshots** (if applicable)
+* Keep README sections "Developer Tools" and "Language Switching" in sync with any updates to `src/popup.html` and `src/js/content.js`.
 
 ---
 

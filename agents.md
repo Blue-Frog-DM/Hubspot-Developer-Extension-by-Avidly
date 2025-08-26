@@ -1,4 +1,4 @@
-# AGENT.md
+# agents.md
 
 ## Agent Coding Standards for Hubspot Developer Extension By Avidly Development
 
