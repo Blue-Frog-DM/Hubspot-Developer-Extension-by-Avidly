@@ -9,11 +9,10 @@ Thank you for considering a contribution! We welcome pull requests, bug reports,
 
 * [Getting Started](#getting-started)
 * [Workflow](#workflow)
-
   * [Branch Naming](#branch-naming)
   * [Commit Messages](#commit-messages)
 * [Coding Standards](#coding-standards)
-* [Testing & Continuous Integration](#testing--continuous-integration)
+* [Testing](#testing)
 * [Documentation](#documentation)
 * [Code of Conduct](#code-of-conduct)
 * [License](#license)
@@ -31,19 +30,18 @@ Thank you for considering a contribution! We welcome pull requests, bug reports,
 2. **Install dependencies**
 
    ```bash
-   npm install   # or pnpm / yarn
+   npm install
    ```
-3. **Run the extension in watch mode**
+3. **Run the extension in development mode**
 
    ```bash
-   npm run dev   # builds to /dist and watches for changes
+   npm run build
    ```
+   This builds the extension to the `/dist` folder.
 4. **Load the development build** in Chrome:
 
    * Navigate to **chrome://extensions** and enable **Developer mode**.
-   * Click **Load unpacked** and select the `/dist` folder that `npm run dev` created.
-
-> **Tip:** The `dev` script rebuilds on save, so simply refresh the extension in the Chrome Extensions page after each change.
+   * Click **Load unpacked** and select the `/dist` folder.
 
 ---
 
@@ -98,15 +96,15 @@ feature(url-tools): add toggle for hsDebug parameter
 * **Manifest V3**: All code must comply with Chrome Extension Manifest V3.
 * **ESLint & Prettier**: Run `npm run lint` to check; `npm run lint --fix` to auto‑fix style issues.
 * **Async/Await**: Use async/await for Chrome API calls.
-* **EditorConfig**: An `.editorconfig` file enforces indentation and line‑ending consistency.
 * **UI**: Keep the popup interface lightweight, accessible, and consistent with the existing design.
 
 ---
 
-## Testing & Continuous Integration
+## Testing
 
-* **Unit tests** (*coming soon*): When available, ensure `npm test` passes locally.
-* **GitHub Actions** run linting and tests on every pull request. A green CI check is required before merge.
+* Ensure all features work as expected in the Chrome browser.
+* Test the extension on HubSpot domains to verify URL tools and language switching functionality.
+* Report any issues or bugs in the repository's issue tracker.
 
 ---
 
