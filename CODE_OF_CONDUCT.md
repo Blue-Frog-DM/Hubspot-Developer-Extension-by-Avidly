@@ -34,7 +34,7 @@ This Code of Conduct applies within all project spaces—version control, issue 
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the maintainers at **[oss@avidly.com](mailto:oss@avidly.com)**. All complaints will be reviewed and investigated promptly and fairly.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the maintainers at **[dev-extention@avidlyagency.com](mailto:dev-extention@avidlyagency.com)**. All complaints will be reviewed and investigated promptly and fairly.
 
 Maintainers are obligated to respect the privacy and security of the reporter of any incident.
 
