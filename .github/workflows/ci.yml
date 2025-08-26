@@ -33,4 +33,4 @@ jobs:
       with:
         name: extension-dist
         path: dist/
-        retention-days: 7
+        retention-days: 3
